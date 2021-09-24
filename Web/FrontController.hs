@@ -13,7 +13,7 @@ import Web.Controller.Static
 
 instance FrontController WebApplication where
     controllers = 
-        [ startPage WelcomeAction
+        [ startPage JournalAction
         -- Generator Marker
         , parseRoute @JournalController
         , parseRoute @BookTypesController

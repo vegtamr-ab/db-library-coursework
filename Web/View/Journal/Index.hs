@@ -5,6 +5,7 @@ data IndexView = IndexView { journal :: [Include' ["bookId", "clientId"] Journal
 
 instance View IndexView where
     html IndexView { .. } = [hsx|
+        <script src="sortTable.js"></script>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href={JournalAction}>Journal</a></li>
@@ -12,14 +13,14 @@ instance View IndexView where
         </nav>
         <h1>Journal <a href={pathTo NewJournalAction} class="btn btn-primary ml-4">+ Lend out a book</a></h1>
         <div class="table-responsive">
-            <table class="table">
+            <table id="dbTable" class="table">
                 <thead>
                     <tr>
-                        <th>Book</th>
-                        <th>Client</th>
-                        <th>Date given</th>
-                        <th>Return until</th>
-                        <th>Date returned</th>
+                        <th class="sortableTh" onclick="sortTableByLex(0)">Book</th>
+                        <th class="sortableTh" onclick="sortTableByLex(1)">Client</th>
+                        <th class="sortableTh" onclick="sortTableByLex(2)">Date given</th>
+                        <th class="sortableTh" onclick="sortTableByLex(3)">Return until</th>
+                        <th class="sortableTh" onclick="sortTableByLex(4)">Date returned</th>
                         <th></th>
                     </tr>
                 </thead>
